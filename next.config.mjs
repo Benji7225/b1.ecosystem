@@ -8,6 +8,11 @@ const nextConfig = {
         hostname: 'ui.shadcn.com',
       },
     ],
+    unoptimized: true,
+  },
+  swcMinify: false,
+  compiler: {
+    removeConsole: false,
   },
 };
 
