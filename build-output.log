@@ -1,0 +1,21 @@
+
+> msaf-link@0.1.0 build
+> next build
+
+ ⚠ Disabling SWC Minifer will not be an option in the next major version. Please report any issues you may be experiencing to https://github.com/vercel/next.js/issues
+Attention: Next.js now collects completely anonymous telemetry regarding usage.
+This information is used to shape Next.js' roadmap and prioritize features.
+You can learn more, including how to opt-out if you'd not like to participate in this anonymous program, by visiting the following URL:
+https://nextjs.org/telemetry
+
+  ▲ Next.js 14.2.2
+  - Environments: .env
+
+   Creating an optimized production build ...
+Failed to compile.
+
+next-app-loader?page=%2F(default)%2Fpage&name=app%2F(default)%2Fpage&pagePath=private-next-app-dir%2F(default)%2Fpage.tsx&appDir=%2Ftmp%2Fcc-agent%2F59227123%2Fproject%2Fapp&appPaths=%2F(default)%2Fpage&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js&basePath=&assetPrefix=&nextConfigOutput=&nextConfigExperimentalUseEarlyImport=false&preferredRegion=&middlewareConfig=e30%3D!:25
+Error: Image import "next-metadata-image-loader?type=favicon&segment=&basePath=&pageExtensions=tsx&pageExtensions=ts&pageExtensions=jsx&pageExtensions=js!/tmp/cc-agent/59227123/project/app/favicon.ico?__next_metadata__" is not a valid image file. The image may be corrupted or an unsupported format.
+
+
+> Build failed because of webpack errors
