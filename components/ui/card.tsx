@@ -1,34 +1,61 @@
 import Image from "next/image";
 import Link from "next/link";
-
 import { cn } from "@/lib/utils";
-import { BlogProps, ProductProps } from "@/lib/types/content";
+
+type Product = {
+  id: string;
+  name: string;
+  description: string;
+  price: number;
+  image_url: string;
+  purchase_url: string;
+};
+
+type Blog = {
+  id: string;
+  title: string;
+  excerpt: string;
+  cover_image_url: string;
+  slug: string;
+};
 
 const SquareCard = ({
   product,
   className = "",
 }: {
-  product: ProductProps;
+  product: Product;
   className?: string;
 }) => {
   return (
     <Link
-      href={product.url}
+      href={product.purchase_url}
       target="_blank"
+      rel="noopener noreferrer"
       className={cn(
         "w-full h-fit border bg-popover backdrop-blur-sm rounded-xl p-2 gap-y-2 flex flex-col animate group cursor-pointer",
         className
       )}
     >
       <div className="relative w-full h-auto aspect-square rounded-lg bg-accent overflow-hidden">
-        <Image src={product.image} alt={product.name} fill />
+        {product.image_url ? (
+          <Image
+            src={product.image_url}
+            alt={product.name}
+            fill
+            className="object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-300" />
+        )}
         <div className="absolute inset-0 w-full h-full bg-transparent group-hover:bg-accent/60 z-10 animate" />
       </div>
       <div className="flex flex-col w-full">
         <h3 className="text-clamp text-popover-foreground font-medium">
           {product.name}
         </h3>
-        <p className="text-clamp-sm text-muted-foreground">${product.price}</p>
+        <p className="text-clamp-sm text-muted-foreground">
+          ${product.price.toFixed(2)}
+        </p>
       </div>
     </Link>
   );
@@ -38,7 +65,7 @@ const RectangleCard = ({
   blog,
   className = "",
 }: {
-  blog: BlogProps;
+  blog: Blog;
   className?: string;
 }) => {
   return (
@@ -49,7 +76,16 @@ const RectangleCard = ({
       )}
     >
       <div className="relative w-full h-auto aspect-square rounded-lg bg-accent overflow-hidden">
-        <Image src={blog.image} alt={blog.title} fill />
+        {blog.cover_image_url ? (
+          <Image
+            src={blog.cover_image_url}
+            alt={blog.title}
+            fill
+            className="object-cover"
+          />
+        ) : (
+          <div className="w-full h-full bg-gray-300" />
+        )}
         <div className="absolute inset-0 w-full h-full bg-transparent group-hover:bg-accent/60 z-10 animate" />
       </div>
       <div className="w-full h-auto aspect-square flex flex-col">
@@ -58,23 +94,11 @@ const RectangleCard = ({
         </p>
         <div className="flex flex-col h-auto grow gap-y-2">
           <p className="text-muted-foreground text-clamp-sm mb-auto line-clamp-3">
-            {blog.description}
+            {blog.excerpt}
           </p>
-          <div className="flex items-center gap-x-1">
-            {blog.tags.map((tag, index) => (
-              <p
-                key={index}
-                className="text-muted-foreground text-clamp-sm leading-none "
-              >
-                {tag}
-                {index < blog.tags.length - 1 ? ", " : ""}
-              </p>
-            ))}
-          </div>
           <Link
-            href={blog.url}
-            target="_blank"
-            className="text-foreground w-fullfont-medium underline text-clamp-sm animate"
+            href={`/blog/${blog.slug}`}
+            className="text-foreground w-full font-medium underline text-clamp-sm animate"
           >
             Read More
           </Link>
@@ -83,4 +107,5 @@ const RectangleCard = ({
     </div>
   );
 };
+
 export { SquareCard, RectangleCard };
