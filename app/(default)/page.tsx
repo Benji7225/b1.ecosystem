@@ -2,6 +2,9 @@ import Link from "next/link";
 import Image from "next/image";
 import { cn } from "@/lib/utils";
 
+// Import your avatar here
+import Avatar from "@/public/images/asset/avatar.jpg";
+
 // Components
 import DotPattern from "@/components/magicui/dot-pattern";
 import { Button, DarkMode } from "@/components/ui/button";

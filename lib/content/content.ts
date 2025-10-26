@@ -23,6 +23,9 @@ import {
   BiLayout,
 } from "react-icons/bi";
 
+// Import your avatar here
+import Avatar from "@/public/images/asset/avatar.jpg";
+
 // Purpose: Toggle shown content on the website.
 const Toggle = {
   socials: true,
@@ -45,7 +48,7 @@ const Bio: BioProps = {
   title: "Software Engineer",
   description:
     "Creative Fullstack Developer Focusing on Next.js, Tailwind CSS and Supabase.",
-  avatar: "/images/asset/avatar.jpg",
+  avatar: Avatar,
   url: "/",
 };
 
